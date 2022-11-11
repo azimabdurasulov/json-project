@@ -12,7 +12,7 @@ def json_file_to_dict(file_path: str) -> dict:
     data_json = json.loads(data)
     return data_json
 
-print(json_file_to_dict("data.json"))
+#print(json_file_to_dict("data.json"))
 
 def get_number_of_users(data: dict) -> int:
     '''all users' data.
@@ -28,9 +28,9 @@ def get_number_of_users(data: dict) -> int:
 
     return len(data["users"])
 data = json_file_to_dict("data.json")
-print(get_number_of_users(data))
+#print(get_number_of_users(data))
 
-def get_all_countries(data: str) -> list:
+def get_all_countries(data: dict) -> list:
     '''all users' data.
     
     Args:
@@ -39,8 +39,12 @@ def get_all_countries(data: str) -> list:
     Returns:
         list: list of counrties
     '''
-    return
-
+    sum = []
+    for i in range(len(data["users"])):
+        sum += [data["users"][i]["country"]]
+    return sum
+data = json_file_to_dict("data.json")
+print(get_all_countries(data))
 
 def get_all_users_fullname(data: str) -> list:
     '''all users' data.
